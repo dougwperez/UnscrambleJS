@@ -21,7 +21,9 @@ background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Fir
   font-family: sans-serif;
   text-transform: uppercase;
   color: red;
-  border: 2px solid white;
+  border: 3px solid white;
+  border-left: 0px;
+  border-right: 0px;
   color:#fff;
   text-shadow: 0 1px 0 #ccc,
                0 2px 0 #c9c9c9,

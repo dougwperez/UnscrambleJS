@@ -17,7 +17,7 @@ class BoxesGroup extends React.Component {
         // // { id: 5, name: "BOX5", color: "pink" },
         // // { id: 6, name: "BOX6", color: "yellow" }
       ],
-      test: ''
+      AnsString: ''
     };
     this.fyShuffle = this.fyShuffle.bind(this)
 
@@ -56,7 +56,8 @@ class BoxesGroup extends React.Component {
 
   componentDidUpdate() {
     console.log("this.props.post within didupdate", this.props.post.Answer)
-    let ansString = this.props.post.Answer.split(" ")
+
+    let ansString = this.props.post.Answer.split("  ")
     console.log("ansString", ansString)
     var newArr = []
     for (var i = 0; i < ansString.length; i++) {
@@ -65,10 +66,27 @@ class BoxesGroup extends React.Component {
     }
     console.log(newArr)
     var testing = this.fyShuffle(newArr);
-    console.log("testing", testing)
+    console.log("newArr", newArr)
     if (this.state.boxes.length === 0) {
       this.setState({ boxes: newArr })
+      this.setState({ AnsString: this.props.post.Answer })
     };
+    // if (this.state.boxes[0].name === "function") {
+    //   alert("WINNING")
+    // }
+    var trackerString = ""
+
+    this.state.boxes.forEach(box => {
+      console.log("name", box.name)
+      return (trackerString += box.name + "  ")
+    })
+    var ts = trackerString.slice(0, -2)
+    console.log("TS", ts, ts.length)
+    console.log("Compare for Victory Condition", this.props.post.Answer, this.state.AnsString.length, this.props.post.Answer)
+    if (this.props.post.Answer === ts) {
+      console.log("Win?", ts, this.state.AnsString)
+      alert("WINNING")
+    }
 
   }
 
