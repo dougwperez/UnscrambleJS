@@ -15,7 +15,7 @@ class AnswerPane extends React.Component {
     return (
       <div>
         <h2>Answer</h2>
-        <div>{this.props.currentQ.Answer}</div>
+        {/* <div>{this.props.currentQ.Answer}</div> */}
         <BoxesGroup post={this.props.currentQ} />
       </div>
     )

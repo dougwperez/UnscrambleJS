@@ -5,7 +5,9 @@ const QuestionPane = (props) => {
   return (
     <div>
       <h2>Question</h2>
-      <div>{props.currentQ.Question}</div>
+      <p>{props.currentQ.Question}</p>
+      <h2>Example</h2>
+      <p className="example">{props.currentQ.Example}</p>
     </div>
   )
 }

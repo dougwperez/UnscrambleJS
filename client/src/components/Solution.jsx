@@ -28,8 +28,10 @@ class Solution extends React.Component {
   render() {
     return (
       <div>
-        <h2>Solution Form</h2>
+        <h1>Solution Form</h1>
         <form onSubmit={this.handleSubmit}>
+          <br />
+
           <label className="form-label">
             Difficulty:
           <select name="Difficulty" className="options" value={this.state.value} onChange={this.handleChange}>
@@ -51,11 +53,11 @@ class Solution extends React.Component {
           <br />
           <br />
           <label>
-            <input
+            <textarea
               name="Answer"
               className="answer-field"
-              placeholder="Enter your solution code here.."
-              type="text"
+              placeholder="Copy and Paste your solution code here.."
+              type="textarea"
               onChange={this.handleChange}
             />
           </label>
