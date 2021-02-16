@@ -11,12 +11,7 @@ class AnswerPane extends React.Component {
 
 
   render(props) {
-    console.log('PROPS', this.props.currentQ.Answer)
-    if (!this.props.currentQ.Answer) {
-      return (
-        <div>Loading</div>
-      )
-    }
+    // console.log('PROPS', this.props.currentQ.Answer)
     return (
       <div>
         <h2>Answer</h2>

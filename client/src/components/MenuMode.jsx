@@ -22,9 +22,9 @@ class MenuMode extends React.Component {
           <li className="external"><a href="https://github.com/dougwperez"><i class="fa fa-github" aria-hidden="true"></i></a></li>
           <li className="external"><a href="https://www.linkedin.com/in/doug-perez/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
         </ul>
-        <h1>
-          JS UNSCRAMBLE
-      </h1>
+        <h1 className="Main-title">
+          <span className="Left-title">JS</span> <span className="right-title">UNSCRAMBLE</span>
+        </h1>
       </div>
     )
   }

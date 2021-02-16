@@ -5,18 +5,32 @@ class BoxesGroup extends React.Component {
   constructor(props) {
     super(props);
     console.log("test within constructor", this.props.post.Answer)
+    let ansString = this.props.post.Answer.split(" ")
+    console.log("ansString", ansString)
+    this.setState({ test: ansString })
     this.state = {
       boxes: [
-        { id: 1, name: "BOX1Test", color: "red" },
-        { id: 2, name: "BOX2", color: "green" },
-        { id: 3, name: "BOX3", color: "blue" },
-        { id: 4, name: "BOX4", color: "orange" },
-        { id: 5, name: "BOX5", color: "pink" },
-        { id: 6, name: "BOX6", color: "yellow" }
+        // { id: 1, name: "rest", color: "red" },
+        // { id: 2, name: "test", color: "green" },
+        // // { id: 3, name: "BOX3", color: "blue" },
+        // // { id: 4, name: "BOX4", color: "orange" },
+        // // { id: 5, name: "BOX5", color: "pink" },
+        // // { id: 6, name: "BOX6", color: "yellow" }
       ],
       test: ''
     };
+    this.fyShuffle = this.fyShuffle.bind(this)
+
   }
+
+  componentDidMount() {
+    console.log("this.props.post.Answer", this.props.post)
+    let ansString = this.props.post.Answer.split(" ")
+    console.log("ansString", ansString)
+  }
+
+
+
   // state = {
   //   boxes: [
   //     { id: 1, name: this.props.post.Answer, color: "red" },
@@ -28,20 +42,56 @@ class BoxesGroup extends React.Component {
   //   ]
   // }
 
-  // componentDidMount() {
-  //   console.log("this.props.post.Answer", this.props.post)
-  //   let ansString = this.props.post.Answer.split(" ")
-  //   console.log("ansString", ansString)
+  // componentDidUpdate(props) {
+  // this.setState({ test: "wprd" })
+  // console.log("this.setState", this.state)
+
   // }
 
-  // componentDidUpdate() {
-  //   console.log("this.props.post within didupdate", this.props.post.Answer)
+  // componentDidMount() {
+  //   console.log("this.props.post.Answer", this.props.post)
   // let ansString = this.props.post.Answer.split(" ")
   // console.log("ansString", ansString)
-  //   if (this.state.boxes.length === 0) {
-  //     this.setState({ boxes: [{ id: 1, name: this.props.post.Answer, color: "Red" }] })
-  //   };
   // }
+
+  componentDidUpdate() {
+    console.log("this.props.post within didupdate", this.props.post.Answer)
+    let ansString = this.props.post.Answer.split(" ")
+    console.log("ansString", ansString)
+    var newArr = []
+    for (var i = 0; i < ansString.length; i++) {
+      console.log("I", i)
+      newArr.push({ id: i, name: ansString[i], color: "red" })
+    }
+    console.log(newArr)
+    var testing = this.fyShuffle(newArr);
+    console.log("testing", testing)
+    if (this.state.boxes.length === 0) {
+      this.setState({ boxes: newArr })
+    };
+
+  }
+
+  fyShuffle(arr) {
+    var currentI = arr.length, tempValue, randomI;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentI) {
+
+      // Pick a remaining element...
+      randomI = Math.floor(Math.random() * currentI);
+      currentI -= 1;
+
+      // And swap it with the current element.
+      tempValue = arr[currentI];
+      arr[currentI] = arr[randomI];
+      arr[randomI] = tempValue;
+    }
+
+    return arr;
+  }
+
+
 
 
   swapBoxes = (fromBox, toBox) => {
@@ -75,6 +125,9 @@ class BoxesGroup extends React.Component {
     let fromBox = JSON.stringify({ id: data.id });
     event.dataTransfer.setData("dragContent", fromBox);
     console.log("this.props.post within body", this.props.post)
+    this.setState({ test: "wprd" })
+    console.log("this.setState", this.state)
+
   };
 
   /* The dragover event is fired when an element or text selection is being dragged */
@@ -98,9 +151,9 @@ class BoxesGroup extends React.Component {
   };
 
   makeBoxes = (answers) => {
-    // console.log("Answers", answers)
-    // var Ans = answers.split(" ")
-    // console.log("Ans", Ans)
+    console.log("Answers", answers)
+    var Ans = answers.split(" ")
+    console.log("Ans", Ans)
     // for (var i = 0; i < Ans.length; i++) {
     //   console.log("Ans[i]", Ans[i])
     //   var added = Ans[i]
@@ -129,7 +182,7 @@ class BoxesGroup extends React.Component {
 
   render() {
     console.log("this.props.post within render", this.props.post)
-    return <div className="boxesGroup">{this.makeBoxes()}</div>;
+    return <div className="boxesGroup">{this.makeBoxes(this.props.post.Answer)}</div>;
   }
 }
 

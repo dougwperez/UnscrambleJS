@@ -16,6 +16,45 @@ background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Fir
   background-image: linear-gradient( 76.3deg,  rgba(44,62,78,1) 12.6%, rgba(69,103,131,1) 82.8% ); */
 }
 
+.Main-title{
+  color:#fff;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  color: red;
+  border: 2px solid white;
+  color:#fff;
+  text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+  font-size: 3.5em;
+  margin-bottom:0;
+}
+
+
+.Left-title{
+  color: red;
+  /* border: 2px solid white inset;
+  background-color: white;
+  padding: 20px;
+  opacity: 0.5; */
+
+}
+.Right-title{
+  color: royalblue;
+  /* border: 2px solid white outset;
+  background-color: white;
+  padding: 20px; */
+}
+
 
 #app {
   width: 100%;
@@ -62,7 +101,7 @@ background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Fir
   width: 95%;
   height: 95vh;
   margin-right: 2%;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-gap: 1rem;
   grid-template-areas:
       "unsolved solved";
@@ -98,13 +137,12 @@ background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Fir
   display: grid;
   width: 100%;
   height: 95vh;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  /* grid-template-rows: 1fr 1fr; */
   grid-gap: 1rem;
   grid-template-areas:
 
-      "question blocks"
-      "answer answer";
+      "question blocks";
 }
 
 @media screen and (max-width: 1000px) {
@@ -125,7 +163,7 @@ background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Fir
   border: 6px solid #171717;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   font-size: 18px;
   font-weight: bold;
 }
@@ -150,11 +188,22 @@ background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Fir
   background-image: linear-gradient(160deg, #6C52D9 0%, #9B8AE6 127%);
 }
 
+.form-label{
+  /* font-weight: bold; */
+  font-size: 16px;
+}
+
+.options{
+  font-size: 16px;
+}
+
 .answer-field{
   height: 600px;
   width: 600px;
+  color: white;
+  font-size: 15px;
   /* Change Colors */
-  background-image: linear-gradient(130deg, #6C52D9 0%, #1EAAFC 85%, #3EDFD7 100%);
+  background-color: #2c3e51;
 }
 
 
@@ -300,8 +349,9 @@ ul li:hover:nth-child(6) a:after{
 .boxesGroup {
   /* main layout to display nested boxes */
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 150px 150px;
+  width: 900px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  /* grid-template-rows: 150px; */
   place-items: center;
   /* decorating */
   background-color: lightgrey;
@@ -312,7 +362,8 @@ ul li:hover:nth-child(6) a:after{
 .box {
   /* nested boxes */
   height: 100px;
-  width: 150px;
+  width: 140px;
+  margin-top: 10px;
   /* decorating */
   border-radius: 10px;
   /* drag style */

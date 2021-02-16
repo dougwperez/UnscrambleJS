@@ -8,7 +8,7 @@ const GameMode = (props) => (
   <div className="game-container">
     <div className="Gamepane question"><QuestionPane currentQ={props.currentQ} /></div>
     <div className="Gamepane blocks"><AnswerPane currentQ={props.currentQ} /></div>
-    <div className="Gamepane answer"><BlockPane currentQ={props.currentQ} /></div>
+    {/* <div className="Gamepane answer"><BlockPane currentQ={props.currentQ} /></div> */}
   </div>
 )
 
