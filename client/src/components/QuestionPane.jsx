@@ -6,6 +6,7 @@ const QuestionPane = (props) => {
     <div>
       <h2>Question</h2>
       <p>{props.currentQ.Question}</p>
+      <br />
       <h2>Example</h2>
       <p className="example">{props.currentQ.Example}</p>
     </div>
