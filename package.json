@@ -10,10 +10,12 @@
   "author": "Beth Johnson",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.23.1",
-    "babel-loader": "^6.3.2",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.23.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
+    "@babel/plugin-transform-destructuring": "^7.12.13",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.0",
     "webpack": "^2.2.1"
   },
   "dependencies": {
