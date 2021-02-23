@@ -1,5 +1,5 @@
 {
-  "name": "hackreactor-groceries",
+  "name": "JS Unscramble",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,11 +14,13 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
     "@babel/plugin-transform-destructuring": "^7.12.13",
     "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.0",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2",
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "express": "^4.15.0",
