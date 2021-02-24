@@ -7,10 +7,13 @@ import BlockPane from "./BlockPane.jsx";
 const GameMode = (props) => (
   <div className="game-container">
     <div className="Gamepane question">
-      <QuestionPane currentQ={props.currentQ} />
+      <QuestionPane currentQ={props.currentQ} updateScore={props.updateScore} />
     </div>
     <div className="Gamepane blocks">
-      <AnswerPane currentQ={props.currentQ} />
+      <AnswerPane
+        currentQ={props.currentQ}
+        getHardQuestion={props.getHardQuestion}
+      />
     </div>
     {/* <div className="Gamepane answer"><BlockPane currentQ={props.currentQ} /></div> */}
   </div>

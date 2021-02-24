@@ -1,13 +1,14 @@
-import React from 'react';
-import Box from './Box.jsx'
+import React from "react";
+import Box from "./Box.jsx";
+import VictoryModal from "./VictoryModal.jsx";
 
 class BoxesGroup extends React.Component {
   constructor(props) {
     super(props);
-    console.log("test within constructor", this.props.post.Answer)
-    let ansString = this.props.post.Answer.split(" ")
-    console.log("ansString", ansString)
-    this.setState({ test: ansString })
+    console.log("test within constructor", this.props.post.Answer);
+    let ansString = this.props.post.Answer.split(" ");
+    console.log("ansString", ansString);
+    this.setState({ test: ansString });
     this.state = {
       boxes: [
         // { id: 1, name: "rest", color: "red" },
@@ -17,19 +18,23 @@ class BoxesGroup extends React.Component {
         // // { id: 5, name: "BOX5", color: "pink" },
         // // { id: 6, name: "BOX6", color: "yellow" }
       ],
-      AnsString: ''
+      AnsString: "",
+      VictoryModal: false,
     };
-    this.fyShuffle = this.fyShuffle.bind(this)
-
+    this.fyShuffle = this.fyShuffle.bind(this);
+    this.victoryOutput = this.victoryOutput.bind(this);
   }
 
   componentDidMount() {
-    console.log("this.props.post.Answer", this.props.post)
-    let ansString = this.props.post.Answer.split(" ")
-    console.log("ansString", ansString)
+    console.log("this.props.post.Answer", this.props.post);
+    let ansString = this.props.post.Answer.split(" ");
+    console.log("ansString", ansString);
+
+    // const audioEl = document.getElementsByClassName("audio-element")[0];
+    // audioEl.play();
+
+    // this.props.showModal();
   }
-
-
 
   // state = {
   //   boxes: [
@@ -55,47 +60,82 @@ class BoxesGroup extends React.Component {
   // }
 
   componentDidUpdate() {
-    console.log("this.props.post within didupdate", this.props.post.Answer)
+    console.log("this.props.post within didupdate", this.props.post.Answer);
 
-    let ansString = this.props.post.Answer.split("  ")
-    console.log("ansString", ansString)
-    var newArr = []
+    let ansString = this.props.post.Answer.split("  ");
+    console.log("ansString", ansString);
+    var newArr = [];
     for (var i = 0; i < ansString.length; i++) {
-      console.log("I", i)
-      newArr.push({ id: i, name: ansString[i], color: "red" })
+      console.log("I", i);
+      newArr.push({ id: i, name: ansString[i], color: "red" });
     }
-    console.log(newArr)
+    console.log(newArr);
     var testing = this.fyShuffle(newArr);
-    console.log("newArr", newArr)
+    console.log("newArr", newArr);
     if (this.state.boxes.length === 0) {
-      this.setState({ boxes: newArr })
-      this.setState({ AnsString: this.props.post.Answer })
-    };
-    // if (this.state.boxes[0].name === "function") {
-    //   alert("WINNING")
-    // }
-    var trackerString = ""
-
-    this.state.boxes.forEach(box => {
-      console.log("name", box.name)
-      return (trackerString += box.name + "  ")
-    })
-    var ts = trackerString.slice(0, -2)
-    console.log("TS", ts, ts.length)
-    console.log("Compare for Victory Condition", this.props.post.Answer, this.state.AnsString.length, this.props.post.Answer)
-    if (this.props.post.Answer === ts) {
-      console.log("Win?", ts, this.state.AnsString)
-      alert("WINNING")
+      this.setState({ boxes: newArr });
+      this.setState({ AnsString: this.props.post.Answer });
     }
+    var trackerString = "";
 
+    this.state.boxes.forEach((box) => {
+      console.log("name", box.name);
+      return (trackerString += box.name + "  ");
+    });
+    //AUDIO FILES
+    const pieceAudio = document.getElementsByClassName("element2")[0];
+    pieceAudio.volume = 0.5;
+    pieceAudio.play();
+
+    var ts = trackerString.slice(0, -2);
+    console.log("TS", ts, ts.length);
+    console.log(
+      "COMPARE FOR VICTORY CONDITION:",
+      this.props.post.Answer,
+      this.state.AnsString.length,
+      this.props.post.Answer
+    );
+
+    if (this.props.post.Answer === ts) {
+      console.log("VICTORY", ts, this.state.AnsString);
+
+      this.victoryOutput();
+      // alert("WINNING");
+      var executed = false;
+      return (props) => {
+        if (!executed) {
+          executed = true;
+          // this.props.showModal();
+          this.setState({ VictoryModal: true });
+        }
+      };
+    }
+  }
+
+  victoryOutput() {
+    const audioEl = document.getElementsByClassName("audio-element")[0];
+    // this.setState({ VictoryModal: true });
+    //call a function in Game Mode that sets modal state and returns a modal
+    audioEl.play();
+    alert("You Won");
+
+    // var executed = false;
+    // return (props) => {
+    //   if (!executed) {
+    //     executed = true;
+    //     // this.props.showModal();
+    //     this.setState({ VictoryModal: true });
+    //   }
+    // };
   }
 
   fyShuffle(arr) {
-    var currentI = arr.length, tempValue, randomI;
+    var currentI = arr.length,
+      tempValue,
+      randomI;
 
     // While there remain elements to shuffle...
     while (0 !== currentI) {
-
       // Pick a remaining element...
       randomI = Math.floor(Math.random() * currentI);
       currentI -= 1;
@@ -108,9 +148,6 @@ class BoxesGroup extends React.Component {
 
     return arr;
   }
-
-
-
 
   swapBoxes = (fromBox, toBox) => {
     let boxes = this.state.boxes.slice();
@@ -139,26 +176,25 @@ class BoxesGroup extends React.Component {
   /* The dragstart event is fired when the user starts dragging an element or text selection */
   /* event.target is the source element : that is dragged */
   /* Firefox requires calling dataTransfer.setData for the drag to properly work */
-  handleDragStart = data => event => {
+  handleDragStart = (data) => (event) => {
     let fromBox = JSON.stringify({ id: data.id });
     event.dataTransfer.setData("dragContent", fromBox);
-    console.log("this.props.post within body", this.props.post)
-    this.setState({ test: "wprd" })
-    console.log("this.setState", this.state)
-
+    console.log("this.props.post within body", this.props.post);
+    this.setState({ test: "wprd" });
+    console.log("this.setState", this.state);
   };
 
   /* The dragover event is fired when an element or text selection is being dragged */
   /* over a valid drop target (every few hundred milliseconds) */
   /* The event is fired on the drop target(s) */
-  handleDragOver = data => event => {
+  handleDragOver = (data) => (event) => {
     event.preventDefault(); // Necessary. Allows us to drop.
     return false;
   };
 
   /* Fired when an element or text selection is dropped on a valid drop target */
   /* The event is fired on the drop target(s) */
-  handleDrop = data => event => {
+  handleDrop = (data) => (event) => {
     event.preventDefault();
 
     let fromBox = JSON.parse(event.dataTransfer.getData("dragContent"));
@@ -169,9 +205,9 @@ class BoxesGroup extends React.Component {
   };
 
   makeBoxes = (answers) => {
-    console.log("Answers", answers)
-    var Ans = answers.split(" ")
-    console.log("Ans", Ans)
+    console.log("Answers", answers);
+    var Ans = answers.split(" ");
+    console.log("Ans", Ans);
     // for (var i = 0; i < Ans.length; i++) {
     //   console.log("Ans[i]", Ans[i])
     //   var added = Ans[i]
@@ -186,7 +222,7 @@ class BoxesGroup extends React.Component {
     // // // this.setState({})
     // this.setState({ test: "FUCK" })
 
-    return this.state.boxes.map(box => (
+    return this.state.boxes.map((box) => (
       <Box
         box={box}
         key={box.id}
@@ -199,8 +235,21 @@ class BoxesGroup extends React.Component {
   };
 
   render() {
-    console.log("this.props.post within render", this.props.post)
-    return <div className="boxesGroup">{this.makeBoxes(this.props.post.Answer)}</div>;
+    console.log("this.props.post within render", this.props.post);
+    return (
+      <div>
+        {this.state.VictoryModal ? <VictoryModal /> : null}
+        <div className="boxesGroup">
+          {this.makeBoxes(this.props.post.Answer)}
+          <audio className="audio-element">
+            <source src="https://assets.coderrocketfuel.com/pomodoro-times-up.mp3"></source>
+          </audio>
+          <audio className="element2">
+            <source src="piece-placement.mp3"></source>
+          </audio>
+        </div>
+      </div>
+    );
   }
 }
 

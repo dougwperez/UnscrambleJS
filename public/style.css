@@ -37,7 +37,7 @@ h3 {
 }
 
 .q-desc {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .example {
@@ -153,7 +153,9 @@ h3 {
 
 .game-container {
   display: grid;
-  width: 100%;
+  /* FOR BIGGER MARGINS */
+  width: 98.1%;
+  margin-left: 1%;
   height: 95vh;
   margin-top: 15px;
   grid-template-columns: 1fr 2fr;
@@ -162,7 +164,7 @@ h3 {
   grid-template-areas: "question blocks";
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1200px) {
   .game-container {
     display: flex;
     flex-direction: column;

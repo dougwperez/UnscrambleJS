@@ -13,19 +13,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FloatingActionButtons() {
+export default function FloatingActionButtons(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Fab color="primary" aria-label="add">
-        <HomeIcon />
+        <HomeIcon onClick={() => window.location.reload(false)} />
       </Fab>
       <Fab color="secondary" aria-label="edit">
         <VolumeOffIcon />
       </Fab>
       <Fab color="white" aria-label="edit">
-        <SettingsBackupRestoreIcon />
+        <SettingsBackupRestoreIcon onClick={() => props.getHardQuestion()} />
       </Fab>
     </div>
   );

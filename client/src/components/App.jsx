@@ -1,23 +1,23 @@
-import React from 'react';
-import axios from 'axios';
-import MenuMode from './MenuMode.jsx';
-import ContributeMode from './ContributeMode.jsx';
-import GameMode from './GameMode.jsx';
+import React from "react";
+import axios from "axios";
+import MenuMode from "./MenuMode.jsx";
+import ContributeMode from "./ContributeMode.jsx";
+import GameMode from "./GameMode.jsx";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentQ: {
-        _id: '',
-        Category: '',
-        Question: '',
-        Answer: '',
+        _id: "",
+        Category: "",
+        Question: "",
+        Answer: "",
         Flag: Boolean,
-        Score: Number
+        Score: Number,
       },
       View: "MenuMode",
-    }
+    };
     //Modes
     this.StartGameMode = this.StartGameMode.bind(this);
     this.StartContributeMode = this.StartContributeMode.bind(this);
@@ -25,69 +25,85 @@ class App extends React.Component {
     this.getEasyQuestion = this.getEasyQuestion.bind(this);
     this.getMediumQuestion = this.getMediumQuestion.bind(this);
     this.getHardQuestion = this.getHardQuestion.bind(this);
+    this.updateScore = this.updateScore.bind(this);
     //Contributions
     this.postContribution = this.postContribution.bind(this);
     this.getContribution = this.getContribution.bind(this);
   }
 
   StartGameMode() {
-    this.setState({ View: "GameMode" })
+    this.setState({ View: "GameMode" });
   }
   StartContributeMode() {
-    this.setState({ View: "ContributeMode" })
+    this.setState({ View: "ContributeMode" });
   }
 
   getEasyQuestion() {
-    this.StartGameMode()
-    axios.get('/api/easy/')
-      .then(response => {
-        console.log("getEasyQuestion response.data", response.data[0])
-        this.setState({ currentQ: response.data[0] })
+    this.StartGameMode();
+    axios
+      .get("/api/easy/")
+      .then((response) => {
+        console.log("getEasyQuestion response.data", response.data[0]);
+        this.setState({ currentQ: response.data[0] });
       })
-      .catch(error => console.log(error))
+      .catch((error) => console.log(error));
   }
   getMediumQuestion() {
-    this.StartGameMode()
-    axios.get('/api/medium/')
-      .then(response => {
-        console.log("getMediumQuestion response.data", response.data[0])
-        this.setState({ currentQ: response.data[0] })
+    this.StartGameMode();
+    axios
+      .get("/api/medium/")
+      .then((response) => {
+        console.log("getMediumQuestion response.data", response.data[0]);
+        this.setState({ currentQ: response.data[0] });
       })
-      .catch(error => console.log(error))
+      .catch((error) => console.log(error));
   }
   getHardQuestion() {
-    this.StartGameMode()
-    axios.get('/api/hard/')
-      .then(response => {
-        console.log("getHardQuestion response.data", response.data[0])
-        this.setState({ currentQ: response.data[0] })
+    this.StartGameMode();
+    axios
+      .get("/api/hard/")
+      .then((response) => {
+        console.log("getHardQuestion response.data", response.data[0]);
+        this.setState({ currentQ: response.data[0] });
       })
-      .catch(error => console.log(error))
+      .catch((error) => console.log(error));
+  }
+
+  updateScore(id, scoreData) {
+    console.log("id in App", id);
+    console.log("score");
+    const scoreObj = { Score: scoreData };
+    console.log(scoreObj);
+    axios
+      .patch(`/api/easy/${id}`, scoreObj)
+      .then((response) => {
+        console.log(response);
+        // this.getMovies()
+      })
+      .catch((error) => console.log(error));
   }
 
   //Contributions
   postContribution() {
-    this.StartContributeMode()
-    axios.get('/api/contribute/')
-      .then(response => {
-        console.log("get contribute questions response.data", response.data)
-        this.setState({ currentQ: response.data })
+    this.StartContributeMode();
+    axios
+      .get("/api/contribute/")
+      .then((response) => {
+        console.log("get contribute questions response.data", response.data);
+        this.setState({ currentQ: response.data });
       })
-      .catch(error => console.log(error))
+      .catch((error) => console.log(error));
   }
   getContribution() {
-    this.StartContributeMode()
-    axios.get('/api/contribute/')
-      .then(response => {
-        console.log("get contribute questions response.data", response.data)
-        this.setState({ currentQ: response.data[0] })
+    this.StartContributeMode();
+    axios
+      .get("/api/contribute/")
+      .then((response) => {
+        console.log("get contribute questions response.data", response.data);
+        this.setState({ currentQ: response.data[0] });
       })
-      .catch(error => console.log(error))
+      .catch((error) => console.log(error));
   }
-
-
-
-
 
   render() {
     // return (
@@ -103,30 +119,28 @@ class App extends React.Component {
     if (this.state.View === "MenuMode") {
       return (
         <div>
-
-
-
           <MenuMode
             getEasyQuestion={this.getEasyQuestion}
             getMediumQuestion={this.getMediumQuestion}
             getHardQuestion={this.getHardQuestion}
             getContribution={this.getContribution}
+            updateScore={this.updateScore}
           />
         </div>
-      )
+      );
     }
     if (this.state.View === "GameMode") {
       return (
-        <GameMode currentQ={this.state.currentQ} />
-      )
+        <GameMode
+          currentQ={this.state.currentQ}
+          getHardQuestion={this.getHardQuestion}
+          updateScore={this.updateScore}
+        />
+      );
     }
     if (this.state.View === "ContributeMode") {
-      return (
-        <ContributeMode currentQ={this.state.currentQ} />
-      )
+      return <ContributeMode currentQ={this.state.currentQ} />;
     }
-
-
   }
   // }
 }

@@ -13,8 +13,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function QFab() {
+export default function QFab(props) {
   const classes = useStyles();
+  console.log("QFAB PROPS", props);
 
   return (
     <div className={classes.root}>
@@ -28,7 +29,7 @@ export default function QFab() {
       <Fab color="white" aria-label="edit">
         <ThumbDownIcon />
       </Fab>
-      5
+      {props.currentQ.Score}
       <Fab color="white" aria-label="edit">
         <ThumbUpIcon />
       </Fab>
