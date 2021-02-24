@@ -76,6 +76,7 @@ class BoxesGroup extends React.Component {
       this.setState({ boxes: newArr });
       this.setState({ AnsString: this.props.post.Answer });
     }
+
     var trackerString = "";
 
     this.state.boxes.forEach((box) => {
@@ -86,7 +87,6 @@ class BoxesGroup extends React.Component {
     const pieceAudio = document.getElementsByClassName("element2")[0];
     pieceAudio.volume = 0.5;
     pieceAudio.play();
-
     var ts = trackerString.slice(0, -2);
     console.log("TS", ts, ts.length);
     console.log(
@@ -96,17 +96,18 @@ class BoxesGroup extends React.Component {
       this.props.post.Answer
     );
 
-    if (this.props.post.Answer === ts) {
-      console.log("VICTORY", ts, this.state.AnsString);
+    if (this.props.post.Answer === ts && this.state.VictoryModal === false) {
+      console.log("Win?", ts, this.state.AnsString);
+      this.setState({ VictoryModal: true });
 
       this.victoryOutput();
+
       // alert("WINNING");
       var executed = false;
       return (props) => {
         if (!executed) {
           executed = true;
           // this.props.showModal();
-          this.setState({ VictoryModal: true });
         }
       };
     }
@@ -114,19 +115,7 @@ class BoxesGroup extends React.Component {
 
   victoryOutput() {
     const audioEl = document.getElementsByClassName("audio-element")[0];
-    // this.setState({ VictoryModal: true });
-    //call a function in Game Mode that sets modal state and returns a modal
     audioEl.play();
-    alert("You Won");
-
-    // var executed = false;
-    // return (props) => {
-    //   if (!executed) {
-    //     executed = true;
-    //     // this.props.showModal();
-    //     this.setState({ VictoryModal: true });
-    //   }
-    // };
   }
 
   fyShuffle(arr) {
