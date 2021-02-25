@@ -19,13 +19,15 @@ export default function QFab(props) {
 
   return (
     <div className={classes.root}>
-      <Fab color="secondary" aria-label="add">
-        <FlagIcon
-          onClick={() => {
-            return alert("FLAGGED");
-          }}
-        />
-      </Fab>
+      <span
+        onClick={() => {
+          return alert("FLAGGED");
+        }}
+      >
+        <Fab color="secondary" aria-label="add">
+          <FlagIcon />
+        </Fab>
+      </span>
       <Fab color="white" aria-label="edit">
         <ThumbDownIcon />
       </Fab>

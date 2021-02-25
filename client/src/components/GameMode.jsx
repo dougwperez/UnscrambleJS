@@ -13,7 +13,6 @@ const GameMode = (props) => (
         getHardQuestion={props.getHardQuestion}
       />
     </div>
-    {/* <div className="Gamepane answer"><BlockPane currentQ={props.currentQ} /></div> */}
   </div>
 );
 

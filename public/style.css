@@ -240,6 +240,7 @@ ul {
   margin: 0;
   padding: 0;
   display: flex;
+  direction: column;
 }
 
 ul li {

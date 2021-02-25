@@ -5,9 +5,9 @@ import VictoryModal from "./VictoryModal.jsx";
 class BoxesGroup extends React.Component {
   constructor(props) {
     super(props);
-    console.log("test within constructor", this.props.post.Answer);
+    // console.log("test within constructor", this.props.post.Answer);
     let ansString = this.props.post.Answer.split(" ");
-    console.log("ansString", ansString);
+    // console.log("ansString", ansString);
     this.setState({ test: ansString });
     this.state = {
       boxes: [],
@@ -19,24 +19,24 @@ class BoxesGroup extends React.Component {
   }
 
   componentDidMount() {
-    console.log("this.props.post.Answer", this.props.post);
+    // console.log("this.props.post.Answer", this.props.post);
     let ansString = this.props.post.Answer.split(" ");
-    console.log("ansString", ansString);
+    // console.log("ansString", ansString);
   }
 
   componentDidUpdate() {
     console.log("this.props.post within didupdate", this.props.post.Answer);
 
     let ansString = this.props.post.Answer.split("  ");
-    console.log("ansString", ansString);
+    // console.log("ansString", ansString);
     var newArr = [];
     for (var i = 0; i < ansString.length; i++) {
-      console.log("I", i);
+      // console.log("I", i);
       newArr.push({ id: i, name: ansString[i], color: "red" });
     }
-    console.log(newArr);
+    // console.log(newArr);
     var testing = this.fyShuffle(newArr);
-    console.log("newArr", newArr);
+    // console.log("newArr", newArr);
     if (this.state.boxes.length === 0) {
       this.setState({ boxes: newArr });
       this.setState({ AnsString: this.props.post.Answer });
@@ -48,6 +48,7 @@ class BoxesGroup extends React.Component {
       console.log("name", box.name);
       return (trackerString += box.name + "  ");
     });
+
     //AUDIO FILES
     const pieceAudio = document.getElementsByClassName("element2")[0];
     pieceAudio.volume = 0.5;
@@ -133,9 +134,9 @@ class BoxesGroup extends React.Component {
   handleDragStart = (data) => (event) => {
     let fromBox = JSON.stringify({ id: data.id });
     event.dataTransfer.setData("dragContent", fromBox);
-    console.log("this.props.post within body", this.props.post);
+    // console.log("this.props.post within body", this.props.post);
     this.setState({ test: "wprd" });
-    console.log("this.setState", this.state);
+    // console.log("this.setState", this.state);
   };
 
   /* The dragover event is fired when an element or text selection is being dragged */
@@ -159,22 +160,9 @@ class BoxesGroup extends React.Component {
   };
 
   makeBoxes = (answers) => {
-    console.log("Answers", answers);
+    // console.log("Answers", answers);
     var Ans = answers.split(" ");
-    console.log("Ans", Ans);
-    // for (var i = 0; i < Ans.length; i++) {
-    //   console.log("Ans[i]", Ans[i])
-    //   var added = Ans[i]
-    //   // this.setState(prevState => ({
-    //   //   boxes: [...prevState.myArray, { "name": "object" }]
-    //   // }))
-    // }
-
-    // // this.setState(prevState => ({
-    // //   boxes: [...prevState.myArray, { "name": "object" }]
-    // // }))
-    // // // this.setState({})
-    // this.setState({ test: "FUCK" })
+    // console.log("Ans", Ans);
 
     return this.state.boxes.map((box) => (
       <Box
@@ -189,7 +177,7 @@ class BoxesGroup extends React.Component {
   };
 
   render() {
-    console.log("this.props.post within render", this.props.post);
+    // console.log("this.props.post within render", this.props.post);
     return (
       <div>
         {this.state.VictoryModal ? <VictoryModal /> : null}
