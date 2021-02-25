@@ -4,6 +4,7 @@ import Fab from "@material-ui/core/Fab";
 import FlagIcon from "@material-ui/icons/Flag";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import FlagModal from "./FlagModal.jsx";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,14 +17,16 @@ const useStyles = makeStyles((theme) => ({
 export default function QFab(props) {
   const classes = useStyles();
   console.log("QFAB PROPS", props);
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   return (
     <div className={classes.root}>
-      <span
-        onClick={() => {
-          return alert("FLAGGED");
-        }}
-      >
+      {open ? <FlagModal /> : null}
+      <span onClick={handleOpen}>
         <Fab color="secondary" aria-label="add">
           <FlagIcon />
         </Fab>
