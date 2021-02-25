@@ -10,14 +10,7 @@ class BoxesGroup extends React.Component {
     console.log("ansString", ansString);
     this.setState({ test: ansString });
     this.state = {
-      boxes: [
-        // { id: 1, name: "rest", color: "red" },
-        // { id: 2, name: "test", color: "green" },
-        // // { id: 3, name: "BOX3", color: "blue" },
-        // // { id: 4, name: "BOX4", color: "orange" },
-        // // { id: 5, name: "BOX5", color: "pink" },
-        // // { id: 6, name: "BOX6", color: "yellow" }
-      ],
+      boxes: [],
       AnsString: "",
       VictoryModal: false,
     };
@@ -29,35 +22,7 @@ class BoxesGroup extends React.Component {
     console.log("this.props.post.Answer", this.props.post);
     let ansString = this.props.post.Answer.split(" ");
     console.log("ansString", ansString);
-
-    // const audioEl = document.getElementsByClassName("audio-element")[0];
-    // audioEl.play();
-
-    // this.props.showModal();
   }
-
-  // state = {
-  //   boxes: [
-  //     { id: 1, name: this.props.post.Answer, color: "red" },
-  //     { id: 2, name: "BOX2", color: "green" },
-  //     { id: 3, name: "BOX3", color: "blue" },
-  //     { id: 4, name: "BOX4", color: "orange" },
-  //     { id: 5, name: "BOX5", color: "pink" },
-  //     { id: 6, name: "BOX6", color: "yellow" }
-  //   ]
-  // }
-
-  // componentDidUpdate(props) {
-  // this.setState({ test: "wprd" })
-  // console.log("this.setState", this.state)
-
-  // }
-
-  // componentDidMount() {
-  //   console.log("this.props.post.Answer", this.props.post)
-  // let ansString = this.props.post.Answer.split(" ")
-  // console.log("ansString", ansString)
-  // }
 
   componentDidUpdate() {
     console.log("this.props.post within didupdate", this.props.post.Answer);

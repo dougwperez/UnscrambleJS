@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   paper: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "crimson",
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
@@ -32,9 +32,6 @@ export default function VictoryModal() {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        react-transition-group
-      </button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -49,9 +46,11 @@ export default function VictoryModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
+            <h2 id="transition-modal-title">
+              Great Work! You solved this challenge!
+            </h2>
             <p id="transition-modal-description">
-              react-transition-group animates me.
+              {/* Great Job! Enjoy JS Unscramble, why not contribute code? */}
             </p>
           </div>
         </Fade>

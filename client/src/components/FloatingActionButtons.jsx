@@ -19,7 +19,12 @@ export default function FloatingActionButtons(props) {
   return (
     <div className={classes.root}>
       <Fab color="primary" aria-label="add">
-        <HomeIcon onClick={() => window.location.reload(false)} />
+        <HomeIcon
+          onClick={() => {
+            console.log("Clicked Home");
+            return window.location.reload(false);
+          }}
+        />
       </Fab>
       <Fab color="secondary" aria-label="edit">
         <VolumeOffIcon />

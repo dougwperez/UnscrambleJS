@@ -1,8 +1,6 @@
 import React from "react";
 import QuestionPane from "./QuestionPane.jsx";
 import AnswerPane from "./AnswerPane.jsx";
-// import Boxes from './AnswerPane.jsx';
-import BlockPane from "./BlockPane.jsx";
 
 const GameMode = (props) => (
   <div className="game-container">

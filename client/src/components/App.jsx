@@ -106,16 +106,6 @@ class App extends React.Component {
   }
 
   render() {
-    // return (
-    // this.state.View === "Modal" ? <ModalMenu
-    //   getEasyQuestion={this.getEasyQuestion}
-    //   getMediumQuestion={this.getMediumQuestion}
-    //   getHardQuestion={this.getHardQuestion}
-    //   postContribution={this.postContribution}
-    // /> :
-    //   <div>
-    //     Hello from App
-    // </div>
     if (this.state.View === "MenuMode") {
       return (
         <div>
@@ -142,7 +132,6 @@ class App extends React.Component {
       return <ContributeMode currentQ={this.state.currentQ} />;
     }
   }
-  // }
 }
 
 export default App;
