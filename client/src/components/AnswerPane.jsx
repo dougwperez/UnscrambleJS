@@ -7,6 +7,7 @@ import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import SettingsBackupRestoreIcon from "@material-ui/icons/SettingsBackupRestore";
 import FloatingActionButtons from "./FloatingActionButtons.jsx";
 import VictoryModal from "./VictoryModal.jsx";
+import Stopwatch from "./Stopwatch.jsx";
 
 class AnswerPane extends React.Component {
   constructor(props) {
@@ -27,7 +28,9 @@ class AnswerPane extends React.Component {
       <div>
         {this.state.View === "Modal" ? <VictoryModal /> : null}
         <div className="answer-header">
-          <div className="fabs"></div>
+          <div className="fabs">
+            <Stopwatch />
+          </div>
           <h2 className="answer-title">Answer</h2>
           <div className="fabs">
             <FloatingActionButtons
