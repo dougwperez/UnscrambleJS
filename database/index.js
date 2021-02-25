@@ -1,21 +1,25 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-mongoose.connect('mongodb://localhost/mvpdb', { useNewUrlParser: true })
-  .then(() => { console.log("MONGO CONNECTED") })
-  .catch(() => { console.log("MONGO CONNECTION FAILED") })
-
+mongoose
+  .connect("mongodb://localhost/mvpdb", { useNewUrlParser: true })
+  .then(() => {
+    console.log("MONGO CONNECTED");
+  })
+  .catch(() => {
+    console.log("MONGO CONNECTION FAILED");
+  });
 
 const easyschema = new mongoose.Schema({
+  Title: String,
   Category: String,
   Question: String,
   Example: String,
   Answer: String,
   Flag: Boolean,
-  Score: Number
-})
+  Score: Number,
+});
 
-let EasyQ = mongoose.model('EasyQ', easyschema)
-
+let EasyQ = mongoose.model("EasyQ", easyschema);
 
 const mediumschema = new mongoose.Schema({
   Category: String,
@@ -23,11 +27,10 @@ const mediumschema = new mongoose.Schema({
   Example: String,
   Answer: String,
   Flag: Boolean,
-  Score: Number
-})
+  Score: Number,
+});
 
-let MediumQ = mongoose.model('MediumQ', mediumschema)
-
+let MediumQ = mongoose.model("MediumQ", mediumschema);
 
 const hardschema = new mongoose.Schema({
   Category: String,
@@ -35,11 +38,10 @@ const hardschema = new mongoose.Schema({
   Example: String,
   Answer: String,
   Flag: Boolean,
-  Score: Number
-})
+  Score: Number,
+});
 
-let HardQ = mongoose.model('HardQ', hardschema)
-
+let HardQ = mongoose.model("HardQ", hardschema);
 
 const contributeschema = new mongoose.Schema({
   Difficulty: String,
@@ -48,15 +50,14 @@ const contributeschema = new mongoose.Schema({
   Example: String,
   Answer: String,
   Flag: Boolean,
-  Score: Number
-})
+  Score: Number,
+});
 
-let Contribution = mongoose.model('Contribution', contributeschema)
-
+let Contribution = mongoose.model("Contribution", contributeschema);
 
 module.exports = {
   EasyQ,
   MediumQ,
   HardQ,
   Contribution,
-}
+};

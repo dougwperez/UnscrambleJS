@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
 class Solution extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Difficulty: '',
-      Category: '',
-      Answer: '',
+      Difficulty: "",
+      Category: "",
+      Answer: "",
       Flag: true,
-      Score: 0
+      Score: 0,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,10 +20,11 @@ class Solution extends React.Component {
   }
 
   handleSubmit(event) {
-    alert("Thank you for Contributing to JS Unscramble. After an evaluation, your problem will be added to our database.");
+    alert(
+      "Thank you for Contributing to JS Unscramble. After an evaluation, your problem will be added to our database."
+    );
     event.preventDefault();
   }
-
 
   render() {
     return (
@@ -33,8 +34,13 @@ class Solution extends React.Component {
           <br />
 
           <label className="form-label">
-            Difficulty:
-          <select name="Difficulty" className="options" value={this.state.value} onChange={this.handleChange}>
+            <span className="form-name-label">Difficulty:</span>
+            <select
+              name="Difficulty"
+              className="options"
+              value={this.state.value}
+              onChange={this.handleChange}
+            >
               <option value="Easy">Easy</option>
               <option value="Medium">Medium</option>
               <option value="Hard">Hard</option>
@@ -43,10 +49,22 @@ class Solution extends React.Component {
           <br />
           <br />
           <label className="form-label">
-            Category:
-          <select name="Category" className="options" value={this.state.value} onChange={this.handleChange}>
-              <option value="Objects">Objects</option>
+            <span className="form-name-label">Category:</span>
+            <select
+              name="Category"
+              className="options"
+              value={this.state.value}
+              onChange={this.handleChange}
+            >
+              <option value="Algorithims">Algorithims</option>
               <option value="Arrays">Arrays</option>
+              <option value="Data-Structures">Data Structures</option>
+              <option value="Interview">Interview</option>
+              <option value="Numbers">Numbers</option>
+              <option value="Objects">Objects</option>
+              <option value="Recurssion">Recurssion</option>
+              <option value="Regex">Regex</option>
+              <option value="Sorting">Sorting</option>
               <option value="Strings">Strings</option>
             </select>
           </label>
@@ -66,7 +84,7 @@ class Solution extends React.Component {
           <input className="options" type="submit" value="Submit" />
         </form>
       </div>
-    )
+    );
   }
 }
 

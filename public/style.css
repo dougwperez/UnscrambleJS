@@ -216,6 +216,10 @@ h3 {
   font-size: 16px;
 }
 
+.form-name-label {
+  padding-right: 10px;
+}
+
 .options {
   font-size: 16px;
 }

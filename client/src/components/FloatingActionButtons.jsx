@@ -30,11 +30,11 @@ export default function FloatingActionButtons(props) {
       <Fab color="secondary" aria-label="edit">
         <VolumeOffIcon />
       </Fab>
-      <span onClick={() => props.getHardQuestion()}>
+      {/* <span onClick={() => props.getHardQuestion()}>
         <Fab color="white" aria-label="edit">
           <SettingsBackupRestoreIcon />
         </Fab>
-      </span>
+      </span> */}
     </div>
   );
 }

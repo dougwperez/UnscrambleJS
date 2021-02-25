@@ -18,9 +18,18 @@ export default function QFab(props) {
   const classes = useStyles();
   console.log("QFAB PROPS", props);
   const [open, setOpen] = React.useState(false);
+  const [counter, setCounter] = React.useState(0);
 
   const handleOpen = () => {
     setOpen(true);
+  };
+
+  const incrementCounter = () => {
+    setCounter(counter + 1);
+  };
+
+  const decrementCounter = () => {
+    setCounter(counter - 1);
   };
 
   return (
@@ -31,13 +40,19 @@ export default function QFab(props) {
           <FlagIcon />
         </Fab>
       </span>
-      <Fab color="white" aria-label="edit">
-        <ThumbDownIcon />
-      </Fab>
-      {props.currentQ.Score}
-      <Fab color="white" aria-label="edit">
-        <ThumbUpIcon />
-      </Fab>
+      <span onClick={decrementCounter}>
+        <Fab color="primary" aria-label="edit">
+          <ThumbDownIcon />
+        </Fab>
+      </span>
+      {counter}
+      {/* STILL HAVE ACCESS TO PROPS */}
+      {/* {props.currentQ.Score} */}
+      <span onClick={incrementCounter}>
+        <Fab color="primary" aria-label="edit">
+          <ThumbUpIcon />
+        </Fab>
+      </span>
     </div>
   );
 }

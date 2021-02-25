@@ -5,7 +5,7 @@ const QuestionPane = (props) => {
   console.log("!!", props.currentQ.Question);
   return (
     <div>
-      <h2>Question</h2>
+      <h2>{props.currentQ.Title}</h2>
       <QFab currentQ={props.currentQ} updateScore={props.updateScore} />
       <p className="q-desc">{props.currentQ.Question}</p>
       <br />
