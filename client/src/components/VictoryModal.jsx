@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VictoryModal() {
+export default function VictoryModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
@@ -47,7 +47,9 @@ export default function VictoryModal() {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">
-              Great Work! You solved this challenge!
+              <div>Great Work! You solved this challenge!</div>
+              <br />
+              <div>Your time: {props.completionTime} </div>
             </h2>
             <p id="transition-modal-description">
               {/* Great Job! Enjoy JS Unscramble, why not contribute code? */}

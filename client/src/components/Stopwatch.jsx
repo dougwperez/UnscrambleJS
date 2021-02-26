@@ -31,6 +31,7 @@ class Stopwatch extends React.Component {
   toggle() {
     this.setState({ isRunning: !this.state.isRunning }, () => {
       this.state.isRunning ? this.startTimer() : clearInterval(this.timer);
+      this.props.passCompletionTime(this.state.timeElapsed);
     });
   }
 

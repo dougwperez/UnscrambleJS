@@ -15,15 +15,24 @@ class AnswerPane extends React.Component {
     this.state = {
       View: "Game",
       GameOver: false,
+      completionTime: "",
     };
     this.showModal = this.showModal.bind(this);
     this.endGame = this.endGame.bind(this);
+    this.passCompletionTime = this.passCompletionTime.bind(this);
   }
 
   endGame() {
     console.log("GAME OVER CALLED IN ANSWER PANE");
     this.setState({ GameOver: true });
     this.refs.Stopwatch.toggle();
+  }
+
+  passCompletionTime(time) {
+    console.log("Whats wrong?", time);
+    if (time > 10) {
+      this.setState({ completionTime: time });
+    }
   }
 
   showModal() {
@@ -37,7 +46,10 @@ class AnswerPane extends React.Component {
         {this.state.View === "Modal" ? <VictoryModal /> : null}
         <div className="answer-header">
           <div className="fabs">
-            <Stopwatch ref="Stopwatch" />
+            <Stopwatch
+              ref="Stopwatch"
+              passCompletionTime={this.passCompletionTime}
+            />
             {/* GameOver={this.state.GameOver} */}
           </div>
           <h2 className="answer-title">
@@ -56,6 +68,7 @@ class AnswerPane extends React.Component {
           post={this.props.currentQ}
           showModal={this.showModal}
           endGame={this.endGame}
+          completionTime={this.state.completionTime}
         />
       </div>
     );

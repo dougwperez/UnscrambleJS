@@ -181,7 +181,9 @@ class BoxesGroup extends React.Component {
     // console.log("this.props.post within render", this.props.post);
     return (
       <div>
-        {this.state.VictoryModal ? <VictoryModal /> : null}
+        {this.state.VictoryModal ? (
+          <VictoryModal completionTime={this.props.completionTime} />
+        ) : null}
         <div className="boxesGroup">
           {this.makeBoxes(this.props.post.Answer)}
           <audio className="audio-element">
