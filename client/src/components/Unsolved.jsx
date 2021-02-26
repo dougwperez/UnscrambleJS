@@ -6,17 +6,13 @@ const Unsolved = (props) => {
   return (
     <div>
       <h1>Contribute by solving this problem:</h1>
-      <ContributeFab />
       <br />
-      <h3>
-        Help JS Unscramble grow by providing your own custom solution to this
-        unsolved problem!
-      </h3>
-      <br />
-      <h2>Question</h2>
-      <p> {props.currentQ.Question}</p>
+      <h2>{props.currentQ.Title}</h2>
+      <ContributeFab getContribution={props.getContribution} />
+      <p className="q-desc"> {props.currentQ.Question}</p>
       <h2>Example</h2>
-      <p> {props.currentQ.Example}</p>
+      <p className="example"> {props.currentQ.Example}</p>
+      <br />
     </div>
   );
 };

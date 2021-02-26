@@ -53,7 +53,7 @@ export default function ContributeFab(props) {
           <ThumbUpIcon />
         </Fab>
       </span>
-      <span>
+      <span onClick={() => props.getContribution()}>
         <Fab color="white" aria-label="edit">
           <SettingsBackupRestoreIcon />
         </Fab>

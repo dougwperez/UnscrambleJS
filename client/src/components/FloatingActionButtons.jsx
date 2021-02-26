@@ -18,6 +18,11 @@ export default function FloatingActionButtons(props) {
 
   return (
     <div className={classes.root}>
+      <span>
+        <Fab color="secondary" aria-label="edit">
+          <VolumeOffIcon />
+        </Fab>
+      </span>
       <span
         onClick={() => {
           location.reload();
@@ -27,9 +32,6 @@ export default function FloatingActionButtons(props) {
           <HomeIcon />
         </Fab>
       </span>
-      <Fab color="secondary" aria-label="edit">
-        <VolumeOffIcon />
-      </Fab>
       {/* <span onClick={() => props.getHardQuestion()}>
         <Fab color="white" aria-label="edit">
           <SettingsBackupRestoreIcon />

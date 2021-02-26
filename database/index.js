@@ -22,6 +22,7 @@ const easyschema = new mongoose.Schema({
 let EasyQ = mongoose.model("EasyQ", easyschema);
 
 const mediumschema = new mongoose.Schema({
+  Title: String,
   Category: String,
   Question: String,
   Example: String,
@@ -33,6 +34,7 @@ const mediumschema = new mongoose.Schema({
 let MediumQ = mongoose.model("MediumQ", mediumschema);
 
 const hardschema = new mongoose.Schema({
+  Title: String,
   Category: String,
   Question: String,
   Example: String,
@@ -44,6 +46,7 @@ const hardschema = new mongoose.Schema({
 let HardQ = mongoose.model("HardQ", hardschema);
 
 const contributeschema = new mongoose.Schema({
+  Title: String,
   Difficulty: String,
   Category: String,
   Question: String,

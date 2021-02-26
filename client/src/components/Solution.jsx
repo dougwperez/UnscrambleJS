@@ -30,6 +30,7 @@ class Solution extends React.Component {
     return (
       <div>
         <h1>Solution Form</h1>
+        <h3>Help JS Unscramble grow by providing your own solution!</h3>
         <form onSubmit={this.handleSubmit}>
           <br />
 

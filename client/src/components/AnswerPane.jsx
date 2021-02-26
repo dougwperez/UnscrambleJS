@@ -31,7 +31,10 @@ class AnswerPane extends React.Component {
           <div className="fabs">
             <Stopwatch />
           </div>
-          <h2 className="answer-title">JS Unscramble</h2>
+          <h2 className="answer-title">
+            <span className="Left-answer-title">JS</span>{" "}
+            <span className="Right-answer-title">UNSCRAMBLE</span>
+          </h2>
           <div className="fabs">
             <FloatingActionButtons
               getHardQuestion={this.props.getHardQuestion}

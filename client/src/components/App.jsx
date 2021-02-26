@@ -129,7 +129,12 @@ class App extends React.Component {
       );
     }
     if (this.state.View === "ContributeMode") {
-      return <ContributeMode currentQ={this.state.currentQ} />;
+      return (
+        <ContributeMode
+          currentQ={this.state.currentQ}
+          getContribution={this.getContribution}
+        />
+      );
     }
   }
 }

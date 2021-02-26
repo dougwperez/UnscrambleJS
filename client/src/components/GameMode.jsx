@@ -5,12 +5,17 @@ import AnswerPane from "./AnswerPane.jsx";
 const GameMode = (props) => (
   <div className="game-container">
     <div className="Gamepane question">
-      <QuestionPane currentQ={props.currentQ} updateScore={props.updateScore} />
+      <QuestionPane
+        currentQ={props.currentQ}
+        updateScore={props.updateScore}
+        getHardQuestion={props.getHardQuestion}
+      />
     </div>
     <div className="Gamepane blocks">
       <AnswerPane
         currentQ={props.currentQ}
-        getHardQuestion={props.getHardQuestion}
+        //OLD SET UP FOR GETTING RANDOM QUESTIOIN
+        // getHardQuestion={props.getHardQuestion}
       />
     </div>
   </div>

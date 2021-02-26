@@ -4,6 +4,7 @@ import Fab from "@material-ui/core/Fab";
 import FlagIcon from "@material-ui/icons/Flag";
 import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import SettingsBackupRestoreIcon from "@material-ui/icons/SettingsBackupRestore";
 import FlagModal from "./FlagModal.jsx";
 
 const useStyles = makeStyles((theme) => ({
@@ -51,6 +52,11 @@ export default function QFab(props) {
       <span onClick={incrementCounter}>
         <Fab color="primary" aria-label="edit">
           <ThumbUpIcon />
+        </Fab>
+      </span>
+      <span onClick={() => props.getHardQuestion()}>
+        <Fab color="white" aria-label="edit">
+          <SettingsBackupRestoreIcon />
         </Fab>
       </span>
     </div>
