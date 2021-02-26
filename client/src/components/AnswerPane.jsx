@@ -14,8 +14,16 @@ class AnswerPane extends React.Component {
     super(props);
     this.state = {
       View: "Game",
+      GameOver: false,
     };
     this.showModal = this.showModal.bind(this);
+    this.endGame = this.endGame.bind(this);
+  }
+
+  endGame() {
+    console.log("GAME OVER CALLED IN ANSWER PANE");
+    this.setState({ GameOver: true });
+    this.refs.Stopwatch.toggle();
   }
 
   showModal() {
@@ -29,7 +37,8 @@ class AnswerPane extends React.Component {
         {this.state.View === "Modal" ? <VictoryModal /> : null}
         <div className="answer-header">
           <div className="fabs">
-            <Stopwatch />
+            <Stopwatch ref="Stopwatch" />
+            {/* GameOver={this.state.GameOver} */}
           </div>
           <h2 className="answer-title">
             <span className="Left-answer-title">JS</span>{" "}
@@ -43,7 +52,11 @@ class AnswerPane extends React.Component {
           </div>
         </div>
         {/* <div>{this.props.currentQ.Answer}</div> */}
-        <BoxesGroup post={this.props.currentQ} showModal={this.showModal} />
+        <BoxesGroup
+          post={this.props.currentQ}
+          showModal={this.showModal}
+          endGame={this.endGame}
+        />
       </div>
     );
   }

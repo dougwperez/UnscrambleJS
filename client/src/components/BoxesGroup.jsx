@@ -82,6 +82,7 @@ class BoxesGroup extends React.Component {
   victoryOutput() {
     const audioEl = document.getElementsByClassName("audio-element")[0];
     audioEl.play();
+    this.props.endGame();
   }
 
   fyShuffle(arr) {
