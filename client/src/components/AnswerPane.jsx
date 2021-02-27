@@ -16,6 +16,7 @@ class AnswerPane extends React.Component {
       View: "Game",
       GameOver: false,
       completionTime: "",
+      timeObj: { minutes: "", seconds: "", milliseconds: "" },
     };
     this.showModal = this.showModal.bind(this);
     this.endGame = this.endGame.bind(this);
@@ -29,9 +30,17 @@ class AnswerPane extends React.Component {
   }
 
   passCompletionTime(time) {
-    console.log("Whats wrong?", time);
+    console.log("raw time in answerpane", time);
+    const seconds = time / 1000;
+    const min = Math.floor(seconds / 60).toString();
+    const sec = Math.floor(seconds % 60).toString();
+    const msec = (seconds % 1).toFixed(3).substring(2);
     if (time > 10) {
+      console.log("TIME!!!!!!", min, sec, msec);
       this.setState({ completionTime: time });
+      this.setState({
+        timeObj: { minutes: min, seconds: sec, milliseconds: msec },
+      });
     }
   }
 
@@ -69,6 +78,7 @@ class AnswerPane extends React.Component {
           showModal={this.showModal}
           endGame={this.endGame}
           completionTime={this.state.completionTime}
+          timeObj={this.state.timeObj}
         />
       </div>
     );

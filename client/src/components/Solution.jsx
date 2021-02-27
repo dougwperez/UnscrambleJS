@@ -1,4 +1,7 @@
 import React from "react";
+import Fab from "@material-ui/core/Fab";
+import HomeIcon from "@material-ui/icons/Home";
+import ContributeModal from "./ContributeModal.jsx";
 
 class Solution extends React.Component {
   constructor(props) {
@@ -9,6 +12,7 @@ class Solution extends React.Component {
       Answer: "",
       Flag: true,
       Score: 0,
+      Modal: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,16 +24,29 @@ class Solution extends React.Component {
   }
 
   handleSubmit(event) {
-    alert(
-      "Thank you for Contributing to JS Unscramble. After an evaluation, your problem will be added to our database."
-    );
     event.preventDefault();
+    this.setState({ Modal: true });
   }
 
   render() {
     return (
       <div>
-        <h1>Solution Form</h1>
+        {this.state.Modal ? <ContributeModal /> : null}
+        <header className="contribution-header">
+          <div></div>
+          <h1>Solution Form</h1>
+          <span
+            className="contribution-homeBtn"
+            onClick={() => {
+              location.reload();
+            }}
+          >
+            <Fab color="primary" aria-label="add">
+              <HomeIcon />
+            </Fab>
+          </span>
+        </header>
+
         <h3>Help JS Unscramble grow by providing your own solution!</h3>
         <form onSubmit={this.handleSubmit}>
           <br />

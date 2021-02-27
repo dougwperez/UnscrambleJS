@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VictoryModal(props) {
+export default function ContributeModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
 
@@ -29,8 +29,7 @@ export default function VictoryModal(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  const { minutes, seconds, milliseconds } = props.timeObj;
-  console.log("Seconds", seconds);
+
   return (
     <div>
       <Modal
@@ -48,14 +47,10 @@ export default function VictoryModal(props) {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">
-              <div>Great Work! You solved this challenge!</div>
+              <div>Thank you for contributing to JS Unscramble.</div>
               <br />
               <div>
-                <div>Minutes: {minutes}</div>
-                <br />
-                <div>Seconds: {seconds}</div>
-                <br />
-                <div>Milliseconds: {milliseconds} </div>
+                After an evaluation, your problem will be added to our database.
               </div>
             </h2>
             <p id="transition-modal-description">

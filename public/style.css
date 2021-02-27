@@ -108,6 +108,16 @@ h3 {
   }
 } */
 
+.contribution-header {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 70px;
+}
+
+.contribution-homeBtn {
+  padding: 15px;
+}
+
 .contribution-pane {
   border: 2px black dashed;
   flex: 1;

@@ -64,7 +64,6 @@ class BoxesGroup extends React.Component {
 
     if (this.props.post.Answer === ts && this.state.VictoryModal === false) {
       console.log("Win?", ts, this.state.AnsString);
-      this.setState({ VictoryModal: true });
 
       this.victoryOutput();
 
@@ -80,6 +79,7 @@ class BoxesGroup extends React.Component {
   }
 
   victoryOutput() {
+    this.setState({ VictoryModal: true });
     const audioEl = document.getElementsByClassName("audio-element")[0];
     audioEl.play();
     this.props.endGame();
@@ -182,7 +182,10 @@ class BoxesGroup extends React.Component {
     return (
       <div>
         {this.state.VictoryModal ? (
-          <VictoryModal completionTime={this.props.completionTime} />
+          <VictoryModal
+            completionTime={this.props.completionTime}
+            timeObj={this.props.timeObj}
+          />
         ) : null}
         <div className="boxesGroup">
           {this.makeBoxes(this.props.post.Answer)}
