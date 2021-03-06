@@ -459,7 +459,7 @@ ul li:hover:nth-child(6) a:after {
   background-color: #b8c6db;
   background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
   border: 2px #2c3e51 solid;
-  border-radius: 7px;
+  border-radius: 20px;
   /* drag style */
   cursor: default;
 }

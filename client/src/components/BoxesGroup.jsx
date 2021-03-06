@@ -13,6 +13,7 @@ class BoxesGroup extends React.Component {
       boxes: [],
       AnsString: "",
       VictoryModal: false,
+      NativeSyntax: "",
     };
     this.fyShuffle = this.fyShuffle.bind(this);
     this.victoryOutput = this.victoryOutput.bind(this);
@@ -26,13 +27,19 @@ class BoxesGroup extends React.Component {
 
   componentDidUpdate() {
     console.log("this.props.post within didupdate", this.props.post.Answer);
+    // {this.props.post.Answer.match("function")}
+    let nativeSyntax = this.props.post.Answer.match("function");
+    console.log("NATIVESYNTAX", nativeSyntax);
 
     let ansString = this.props.post.Answer.split("  ");
     // console.log("ansString", ansString);
     var newArr = [];
     for (var i = 0; i < ansString.length; i++) {
       // console.log("I", i);
-      newArr.push({ id: i, name: ansString[i], color: "red" });
+      if (ansString[i].match(nativeSyntax)) {
+        ansString[i].fontcolor("blue");
+      }
+      newArr.push({ id: i, name: ansString[i], color: "white" });
     }
     // console.log(newArr);
     var testing = this.fyShuffle(newArr);
@@ -40,6 +47,7 @@ class BoxesGroup extends React.Component {
     if (this.state.boxes.length === 0) {
       this.setState({ boxes: newArr });
       this.setState({ AnsString: this.props.post.Answer });
+      this.setState({ NativeSyntax: nativeSyntax });
     }
 
     var trackerString = "";
