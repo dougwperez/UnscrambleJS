@@ -18,21 +18,21 @@ class MenuMode extends React.Component {
           <li onClick={this.props.getEasyQuestion}>
             <a href="#">
               <i class="fa fa-thermometer-empty" aria-hidden="true">
-                Easy
+                Beginner
               </i>
             </a>
           </li>
           <li onClick={this.props.getMediumQuestion}>
             <a href="#">
               <i class="fa fa-thermometer-half" aria-hidden="true">
-                Medium
+                Intermediate
               </i>
             </a>
           </li>
           <li onClick={this.props.getHardQuestion}>
             <a href="#">
               <i class="fa fa-thermometer-full" aria-hidden="true">
-                Hard
+                Advanced
               </i>
             </a>
           </li>

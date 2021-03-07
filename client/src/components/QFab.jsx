@@ -19,8 +19,8 @@ export default function QFab(props) {
   const classes = useStyles();
   console.log("QFAB PROPS", props);
   const [open, setOpen] = React.useState(false);
-  const [counter, setCounter] = React.useState(0);
-
+  const [counter, setCounter] = React.useState(props.currentQ.Score);
+  const [hover, setHover] = React.useState("");
   const handleOpen = () => {
     setOpen(true);
   };
@@ -36,27 +36,43 @@ export default function QFab(props) {
   return (
     <div className={classes.root}>
       {open ? <FlagModal /> : null}
-      <span onClick={handleOpen}>
+      <span
+        onClick={handleOpen}
+        onMouseOver={() => setHover("Flag")}
+        onMouseOut={() => setHover("")}
+      >
         <Fab color="secondary" aria-label="add">
-          <FlagIcon />
+          {hover === "Flag" ? "Flag" : <FlagIcon />}
         </Fab>
       </span>
-      <span onClick={decrementCounter}>
+      <span
+        onClick={decrementCounter}
+        onMouseOver={() => setHover("Down Vote")}
+        onMouseOut={() => setHover("")}
+      >
         <Fab color="primary" aria-label="edit">
-          <ThumbDownIcon />
+          {hover === "Down Vote" ? "Down Vote" : <ThumbDownIcon />}
         </Fab>
       </span>
       {counter}
       {/* STILL HAVE ACCESS TO PROPS */}
       {/* {props.currentQ.Score} */}
-      <span onClick={incrementCounter}>
+      <span
+        onClick={incrementCounter}
+        onMouseOver={() => setHover("Up Vote")}
+        onMouseOut={() => setHover("")}
+      >
         <Fab color="primary" aria-label="edit">
-          <ThumbUpIcon />
+          {hover === "Up Vote" ? "Up Vote" : <ThumbUpIcon />}
         </Fab>
       </span>
-      <span onClick={() => props.getHardQuestion()}>
+      <span
+        onClick={() => props.getHardQuestion()}
+        onMouseOver={() => setHover("Swap")}
+        onMouseOut={() => setHover("")}
+      >
         <Fab color="white" aria-label="edit">
-          <SettingsBackupRestoreIcon />
+          {hover === "Swap" ? "Swap" : <SettingsBackupRestoreIcon />}
         </Fab>
       </span>
     </div>

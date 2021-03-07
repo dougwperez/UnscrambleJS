@@ -15,21 +15,27 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FloatingActionButtons(props) {
   const classes = useStyles();
+  const [hover, setHover] = React.useState("");
 
   return (
     <div className={classes.root}>
-      <span>
+      <span
+        onMouseOver={() => setHover("Mute")}
+        onMouseOut={() => setHover("")}
+      >
         <Fab color="secondary" aria-label="edit">
-          <VolumeOffIcon />
+          {hover === "Mute" ? "Mute" : <VolumeOffIcon />}
         </Fab>
       </span>
       <span
         onClick={() => {
           location.reload();
         }}
+        onMouseOver={() => setHover("Main Menu")}
+        onMouseOut={() => setHover("")}
       >
         <Fab color="primary" aria-label="add">
-          <HomeIcon />
+          {hover === "Main Menu" ? "Main Menu" : <HomeIcon />}
         </Fab>
       </span>
       {/* <span onClick={() => props.getHardQuestion()}>

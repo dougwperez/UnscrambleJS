@@ -13,6 +13,7 @@ class Solution extends React.Component {
       Flag: true,
       Score: 0,
       Modal: false,
+      Hover: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,9 +41,11 @@ class Solution extends React.Component {
             onClick={() => {
               location.reload();
             }}
+            onMouseOver={() => this.setState({ Hover: "Main Menu" })}
+            onMouseOut={() => this.setState({ Hover: "" })}
           >
             <Fab color="primary" aria-label="add">
-              <HomeIcon />
+              {this.state.Hover === "Main Menu" ? "Main Menu" : <HomeIcon />}
             </Fab>
           </span>
         </header>
@@ -59,9 +62,9 @@ class Solution extends React.Component {
               value={this.state.value}
               onChange={this.handleChange}
             >
-              <option value="Easy">Easy</option>
-              <option value="Medium">Medium</option>
-              <option value="Hard">Hard</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
             </select>
           </label>
           <br />

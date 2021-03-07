@@ -20,6 +20,7 @@ export default function ContributeFab(props) {
   console.log("QFAB PROPS", props);
   const [open, setOpen] = React.useState(false);
   const [counter, setCounter] = React.useState(0);
+  const [hover, setHover] = React.useState("");
 
   const handleOpen = () => {
     setOpen(true);
@@ -36,26 +37,42 @@ export default function ContributeFab(props) {
   return (
     <div className={classes.root}>
       {open ? <FlagModal /> : null}
-      <span onClick={handleOpen}>
+      <span
+        onClick={handleOpen}
+        onMouseOver={() => setHover("Flag")}
+        onMouseOut={() => setHover("")}
+      >
         <Fab color="secondary" aria-label="add">
-          <FlagIcon />
+          {hover === "Flag" ? "Flag" : <FlagIcon />}
         </Fab>
       </span>
-      <span onClick={decrementCounter}>
+      <span
+        onClick={decrementCounter}
+        onMouseOver={() => setHover("Down Vote")}
+        onMouseOut={() => setHover("")}
+      >
         <Fab color="primary" aria-label="edit">
-          <ThumbDownIcon />
+          {hover === "Down Vote" ? "Down Vote" : <ThumbDownIcon />}
         </Fab>
       </span>
       {/* {props.currentQ.Score} */}
       {counter}
-      <span onClick={incrementCounter}>
+      <span
+        onClick={incrementCounter}
+        onMouseOver={() => setHover("Up Vote")}
+        onMouseOut={() => setHover("")}
+      >
         <Fab color="primary" aria-label="edit">
-          <ThumbUpIcon />
+          {hover === "Up Vote" ? "Up Vote" : <ThumbUpIcon />}
         </Fab>
       </span>
-      <span onClick={() => props.getContribution()}>
+      <span
+        onClick={() => props.getContribution()}
+        onMouseOver={() => setHover("Swap")}
+        onMouseOut={() => setHover("")}
+      >
         <Fab color="white" aria-label="edit">
-          <SettingsBackupRestoreIcon />
+          {hover === "Swap" ? "Swap" : <SettingsBackupRestoreIcon />}
         </Fab>
       </span>
     </div>
