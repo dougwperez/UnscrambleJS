@@ -12,9 +12,11 @@ class Stopwatch extends React.Component {
   constructor(props) {
     super(props);
 
-    ["update", "reset", "toggle"].forEach((method) => {
-      this[method] = this[method].bind(this);
-    });
+    ["update", "reset", "toggle", "startTimer", "resetAndRestart"].forEach(
+      (method) => {
+        this[method] = this[method].bind(this);
+      }
+    );
 
     this.state = this.initialState = {
       isRunning: false,
@@ -47,6 +49,12 @@ class Stopwatch extends React.Component {
     this.startTime = Date.now();
     this.timer = setInterval(this.update, 10);
   }
+
+  resetAndRestart() {
+    this.reset();
+    this.startTimer();
+  }
+
   update() {
     const delta = Date.now() - this.startTime;
     this.setState({ timeElapsed: this.state.timeElapsed + delta });
@@ -58,7 +66,6 @@ class Stopwatch extends React.Component {
     return (
       <div>
         <TimeElapsed id="timer" timeElapsed={timeElapsed} />
-        {/* <button onClick={this.toggle}>{isRunning ? "Stop" : "Start"}</button> */}
       </div>
     );
   }

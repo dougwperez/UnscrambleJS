@@ -20,6 +20,7 @@ class AnswerPane extends React.Component {
     };
     this.showModal = this.showModal.bind(this);
     this.endGame = this.endGame.bind(this);
+    this.swapTimerRefresh = this.swapTimerRefresh.bind(this);
     this.passCompletionTime = this.passCompletionTime.bind(this);
   }
 
@@ -27,6 +28,10 @@ class AnswerPane extends React.Component {
     console.log("GAME OVER CALLED IN ANSWER PANE");
     this.setState({ GameOver: true });
     this.refs.Stopwatch.toggle();
+  }
+
+  swapTimerRefresh() {
+    this.refs.Stopwatch.resetAndRestart();
   }
 
   passCompletionTime(time) {
@@ -77,6 +82,7 @@ class AnswerPane extends React.Component {
           post={this.props.currentQ}
           showModal={this.showModal}
           endGame={this.endGame}
+          swapTimerRefresh={this.swapTimerRefresh}
           completionTime={this.state.completionTime}
           timeObj={this.state.timeObj}
         />

@@ -54,6 +54,7 @@ class BoxesGroup extends React.Component {
       this.setState({ boxes: newArr });
       this.setState({ AnsString: this.props.post.Answer });
       this.setState({ NativeSyntax: nativeSyntax });
+      this.props.swapTimerRefresh();
     }
 
     var trackerString = "";
