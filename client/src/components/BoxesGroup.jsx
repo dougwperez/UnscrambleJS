@@ -22,7 +22,7 @@ class BoxesGroup extends React.Component {
   componentDidMount() {
     // console.log("this.props.post.Answer", this.props.post);
     let ansString = this.props.post.Answer.split(" ");
-    // console.log("ansString", ansString);
+    // console.log("ansStringNOW", ansString);
   }
 
   componentDidUpdate() {
@@ -32,7 +32,7 @@ class BoxesGroup extends React.Component {
     console.log("NATIVESYNTAX", nativeSyntax);
 
     let ansString = this.props.post.Answer.split("  ");
-    // console.log("ansString", ansString);
+    console.log("ansStringReal", ansString);
     var newArr = [];
     for (var i = 0; i < ansString.length; i++) {
       // console.log("I", i);
@@ -45,6 +45,12 @@ class BoxesGroup extends React.Component {
     var testing = this.fyShuffle(newArr);
     // console.log("newArr", newArr);
     if (this.state.boxes.length === 0) {
+      this.setState({ boxes: newArr });
+      this.setState({ AnsString: this.props.post.Answer });
+      this.setState({ NativeSyntax: nativeSyntax });
+    }
+    //SPECIFICALLY IF THE SWAP BUTTON IS PRESSED
+    if (this.state.AnsString !== this.props.post.Answer) {
       this.setState({ boxes: newArr });
       this.setState({ AnsString: this.props.post.Answer });
       this.setState({ NativeSyntax: nativeSyntax });

@@ -11,6 +11,10 @@ const QuestionPane = (props) => {
         currentQ={props.currentQ}
         updateScore={props.updateScore}
       />
+      <span>
+        <h3>Difficulty: {props.difficulty}</h3>
+        <h3>Category: {props.currentQ.Category}</h3>
+      </span>
       <p className="q-desc">{props.currentQ.Question}</p>
       <br />
       <h2>Example</h2>

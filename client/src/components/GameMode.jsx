@@ -7,6 +7,7 @@ const GameMode = (props) => (
     <div className="Gamepane question">
       <QuestionPane
         currentQ={props.currentQ}
+        difficulty={props.difficulty}
         updateScore={props.updateScore}
         getHardQuestion={props.getHardQuestion}
       />

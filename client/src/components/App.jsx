@@ -17,6 +17,7 @@ class App extends React.Component {
         Score: Number,
       },
       View: "MenuMode",
+      difficulty: "",
     };
     //Modes
     this.StartGameMode = this.StartGameMode.bind(this);
@@ -40,6 +41,7 @@ class App extends React.Component {
 
   getEasyQuestion() {
     this.StartGameMode();
+    this.setState({ difficulty: "Beginner" });
     axios
       .get("/api/easy/")
       .then((response) => {
@@ -50,6 +52,7 @@ class App extends React.Component {
   }
   getMediumQuestion() {
     this.StartGameMode();
+    this.setState({ difficulty: "Intermediate" });
     axios
       .get("/api/medium/")
       .then((response) => {
@@ -60,6 +63,7 @@ class App extends React.Component {
   }
   getHardQuestion() {
     this.StartGameMode();
+    this.setState({ difficulty: "Advanced" });
     axios
       .get("/api/hard/")
       .then((response) => {
@@ -123,6 +127,7 @@ class App extends React.Component {
       return (
         <GameMode
           currentQ={this.state.currentQ}
+          difficulty={this.state.difficulty}
           getHardQuestion={this.getHardQuestion}
           updateScore={this.updateScore}
         />
