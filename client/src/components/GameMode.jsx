@@ -9,6 +9,8 @@ const GameMode = (props) => (
         currentQ={props.currentQ}
         difficulty={props.difficulty}
         updateScore={props.updateScore}
+        getEasyQuestion={props.getEasyQuestion}
+        getMediumQuestion={props.getMediumQuestion}
         getHardQuestion={props.getHardQuestion}
       />
     </div>

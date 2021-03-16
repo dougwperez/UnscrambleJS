@@ -49,7 +49,7 @@ class BoxesGroup extends React.Component {
       this.setState({ AnsString: this.props.post.Answer });
       this.setState({ NativeSyntax: nativeSyntax });
     }
-    //SPECIFICALLY IF THE SWAP BUTTON IS PRESSED
+    //SPECIFICALLY IF THE SWAP BUTTON IS PRESSED, RESETS BOXES TO NEW PROBLEM
     if (this.state.AnsString !== this.props.post.Answer) {
       this.setState({ boxes: newArr });
       this.setState({ AnsString: this.props.post.Answer });

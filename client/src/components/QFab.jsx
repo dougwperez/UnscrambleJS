@@ -33,6 +33,17 @@ export default function QFab(props) {
     setCounter(counter - 1);
   };
 
+  const swapDifficultyRefresh = () => {
+    // console.log(props.difficulty);
+    if (props.difficulty === "Advanced") {
+      props.getHardQuestion();
+    } else if (props.difficulty === "Intermediate") {
+      props.getMediumQuestion();
+    } else {
+      props.getEasyQuestion();
+    }
+  };
+
   return (
     <div className={classes.root}>
       {open ? <FlagModal /> : null}
@@ -67,7 +78,8 @@ export default function QFab(props) {
         </Fab>
       </span>
       <span
-        onClick={() => props.getHardQuestion()}
+        // onClick={() => props.getHardQuestion()}
+        onClick={swapDifficultyRefresh}
         onMouseOver={() => setHover("Swap")}
         onMouseOut={() => setHover("")}
       >

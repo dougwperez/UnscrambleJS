@@ -128,6 +128,8 @@ class App extends React.Component {
         <GameMode
           currentQ={this.state.currentQ}
           difficulty={this.state.difficulty}
+          getEasyQuestion={this.getEasyQuestion}
+          getMediumQuestion={this.getMediumQuestion}
           getHardQuestion={this.getHardQuestion}
           updateScore={this.updateScore}
         />

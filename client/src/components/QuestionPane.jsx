@@ -7,6 +7,9 @@ const QuestionPane = (props) => {
     <div>
       <h2>{props.currentQ.Title}</h2>
       <QFab
+        difficulty={props.difficulty}
+        getEasyQuestion={props.getEasyQuestion}
+        getMediumQuestion={props.getMediumQuestion}
         getHardQuestion={props.getHardQuestion}
         currentQ={props.currentQ}
         updateScore={props.updateScore}
