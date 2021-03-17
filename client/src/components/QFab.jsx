@@ -18,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
 export default function QFab(props) {
   const classes = useStyles();
   console.log("QFAB PROPS", props);
-  const [open, setOpen] = React.useState(false);
   const [counter, setCounter] = React.useState(props.currentQ.Score);
+  const [open, setOpen] = React.useState(false);
   const [hover, setHover] = React.useState("");
   const handleOpen = () => {
     setOpen(true);
@@ -27,6 +27,12 @@ export default function QFab(props) {
 
   const incrementCounter = () => {
     setCounter(counter + 1);
+
+    if (props.difficulty === "Beginner") {
+      props.updateScore("easy", props.currentQ._id, counter + 1);
+    } else if (props.difficulty === "Intermediate") {
+      props.updateScore("medium", props.currentQ._id, counter + 1);
+    }
   };
 
   const decrementCounter = () => {
@@ -46,6 +52,8 @@ export default function QFab(props) {
 
   return (
     <div className={classes.root}>
+      {/* FIX INCREMENT */}
+      {/* <h3>Score: {props.currentQ.Score}</h3> */}
       {open ? <FlagModal /> : null}
       <span
         onClick={handleOpen}
@@ -80,6 +88,7 @@ export default function QFab(props) {
       <span
         // onClick={() => props.getHardQuestion()}
         onClick={swapDifficultyRefresh}
+        // onClick={swapTimerRefresh}
         onMouseOver={() => setHover("Swap")}
         onMouseOut={() => setHover("")}
       >

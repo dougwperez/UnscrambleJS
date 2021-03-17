@@ -27,11 +27,15 @@ class AnswerPane extends React.Component {
   endGame() {
     console.log("GAME OVER CALLED IN ANSWER PANE");
     this.setState({ GameOver: true });
-    this.refs.Stopwatch.toggle();
+    this.refs.Stopwatch.toggle2();
   }
 
   swapTimerRefresh() {
+    console.log("swapTimerRefreshCALLED!!!");
     this.refs.Stopwatch.resetAndRestart();
+    // if (this.state.GameOver === false) {
+    //   this.refs.Stopwatch.resetAndRestart();
+    // }
   }
 
   passCompletionTime(time) {

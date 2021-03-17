@@ -73,15 +73,19 @@ class App extends React.Component {
       .catch((error) => console.log(error));
   }
 
-  updateScore(id, scoreData) {
+  updateScore(difficulty, id, scoreData) {
+    console.log("difficulty in App", difficulty);
     console.log("id in App", id);
-    console.log("score");
+    console.log("score", scoreData);
+    // this.setState({ currentQ.Score: 5});
     const scoreObj = { Score: scoreData };
     console.log(scoreObj);
     axios
-      .patch(`/api/easy/${id}`, scoreObj)
+      .patch(`/api/${difficulty}/${id}`, scoreObj)
       .then((response) => {
         console.log(response);
+        this.getEasyQuestion;
+        // this.setState({ currentQ.Score: response.Score});
         // this.getMovies()
       })
       .catch((error) => console.log(error));

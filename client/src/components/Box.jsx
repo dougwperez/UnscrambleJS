@@ -14,7 +14,7 @@ class Box extends React.Component {
     var textLabel;
     if (this.state.NativeSyntax.includes(this.props.box.name)) {
       textLabel = (
-        <div className="content" style={{ color: "#24F8F6" }}>
+        <div className="content" style={{ color: "#000080" }}>
           {this.props.box.name}
         </div>
       );

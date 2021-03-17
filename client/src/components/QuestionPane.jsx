@@ -17,6 +17,7 @@ const QuestionPane = (props) => {
       <span>
         <h3>Difficulty: {props.difficulty}</h3>
         <h3>Category: {props.currentQ.Category}</h3>
+        {/* <h3>Score: {props.currentQ.Score}</h3> */}
       </span>
       <p className="q-desc">{props.currentQ.Question}</p>
       <br />

@@ -19,6 +19,7 @@ app.get("/api/medium", MvpController.getMediumQuestion);
 app.get("/api/hard", MvpController.getHardQuestion);
 
 app.patch("/api/easy/:id", MvpController.patchEasyQuestion);
+app.patch("/api/medium/:id", MvpController.patchMediumQuestion);
 
 //Contribution
 app.post("/api/contribute", MvpController.postContribution);

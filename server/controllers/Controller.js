@@ -76,6 +76,30 @@ exports.patchEasyQuestion = async (req, res) => {
   }
 };
 
+exports.patchMediumQuestion = async (req, res) => {
+  try {
+    const question = await MediumQ.findById(req.params.id);
+    Object.assign(question, req.body);
+    question.save();
+    res.send(question);
+  } catch (err) {
+    console.log("Failed to patch question", err);
+    res.status(404).send(err);
+  }
+};
+
+// exports.patchScorre = async (req, res) => {
+//   try {
+//     // const question = await EasyQ.findById(req.params.id);
+//     // Object.assign(question, req.body);
+//     // question.save();
+//     // res.send(question);
+//   } catch (err) {
+//     // console.log("Failed to patch question", err);
+//     // res.status(404).send(err);
+//   }
+// };
+
 //CONTRIBUTIONS
 
 exports.postContribution = async (req, res) => {

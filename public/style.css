@@ -16,8 +16,8 @@ body {
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to top,
-    #2c3e50,
-    #bdc3c7
+    #0c66bf,
+    #f1f2f4
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   /* margin: 5px;
@@ -123,7 +123,7 @@ h3 {
   flex: 1;
   height: 95vh;
   padding: 6px;
-  border-radius: 7px;
+  border-radius: 20px;
 }
 
 .contribution-container {
@@ -199,7 +199,7 @@ h3 {
   align-items: flex-start;
   font-size: 18px;
   font-weight: bold;
-  border-radius: 7px;
+  border-radius: 20px;
 }
 
 .question {
@@ -267,7 +267,20 @@ ul li a .fa {
   color: #262626;
   line-height: 80px;
   transition: 0.5s;
+  /* color: red; */
 }
+
+/* ul li a .fa .fa-thermometer-full {
+  font-size: 40px;
+  color: #262626;
+  line-height: 80px;
+  transition: 0.5s;
+  color: red;
+} */
+
+/* .advanced-icon {
+  color: red;
+} */
 
 ul li a {
   position: relative;
@@ -313,6 +326,28 @@ ul li a:hover {
     translate(20px, -20px);
   box-shadow: -50px 50px 50px rgba(0, 0, 0, 0.5);
 }
+
+ul li:nth-child(1) a:before {
+  background: #4184b7;
+}
+ul li:nth-child(1) a:after {
+  background: #4d9fde;
+}
+
+ul li:nth-child(2) a:before {
+  background: #b79241;
+}
+ul li:nth-child(2) a:after {
+  background: #de914d;
+}
+
+ul li:nth-child(3) a:before {
+  background: #c13929;
+}
+ul li:nth-child(3) a:after {
+  background: #e8432e;
+}
+
 ul li:hover .fa {
   color: #fff;
 }
@@ -536,8 +571,8 @@ body {
   text-align: center;
   font-size: 1.5rem;
   width: auto;
-  border: 1px black solid;
-  border-radius: 6px;
+  border: 1px black dashed;
+  border-radius: 10px;
 }
 
 .tsection {
@@ -568,12 +603,12 @@ body {
 }
 
 .time > span:first-child > .tnum {
-  border-top-left-radius: 6px;
+  border-top-left-radius: 10px;
   background: hsl(24, 100%, 41%);
 }
 
 .time > span:first-child > .tlabel {
-  border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 10px;
   background: hsl(24, 100%, 31%);
 }
 
@@ -595,12 +630,12 @@ body {
 }
 
 .time > span:last-child > .tnum {
-  border-top-right-radius: 6px;
+  border-top-right-radius: 10px;
   background: hsl(204, 64%, 44%);
 }
 
 .time > span:last-child > .tlabel {
-  border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 10px;
   background: hsl(204, 64%, 34%);
 }
 

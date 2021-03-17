@@ -12,11 +12,16 @@ class Stopwatch extends React.Component {
   constructor(props) {
     super(props);
 
-    ["update", "reset", "toggle", "startTimer", "resetAndRestart"].forEach(
-      (method) => {
-        this[method] = this[method].bind(this);
-      }
-    );
+    [
+      "update",
+      "reset",
+      "toggle",
+      "resetAndRestart",
+      "getTime",
+      "toggle2",
+    ].forEach((method) => {
+      this[method] = this[method].bind(this);
+    });
 
     this.state = this.initialState = {
       isRunning: false,
@@ -25,16 +30,26 @@ class Stopwatch extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.toggle();
-    // this.startTimer();
-  }
+  componentDidMount() {}
 
   toggle() {
     this.setState({ isRunning: !this.state.isRunning }, () => {
       this.state.isRunning ? this.startTimer() : clearInterval(this.timer);
       this.props.passCompletionTime(this.state.timeElapsed);
     });
+  }
+
+  toggle2() {
+    this.setState({ isRunning: true });
+    clearInterval(this.timer);
+    this.props.passCompletionTime(this.state.timeElapsed);
+  }
+
+  getTime() {
+    console.log(
+      "GET TIME!!!",
+      this.props.passCompletionTime(this.state.timeElapsed)
+    );
   }
 
   // if(this.props.GameOver){
@@ -47,12 +62,13 @@ class Stopwatch extends React.Component {
   }
   startTimer() {
     this.startTime = Date.now();
+    this.setState({ isRunning: false });
     this.timer = setInterval(this.update, 10);
   }
 
   resetAndRestart() {
     this.reset();
-    this.startTimer();
+    this.toggle();
   }
 
   update() {
@@ -65,6 +81,10 @@ class Stopwatch extends React.Component {
 
     return (
       <div>
+        {/* <button onClick={this.resetAndRestart}>resetAndRestart</button>
+        <button onClick={this.toggle2}>toggle2</button>
+        <button onClick={this.reset}>reset</button>
+        <button onClick={this.getTime}>getTime</button> */}
         <TimeElapsed id="timer" timeElapsed={timeElapsed} />
       </div>
     );
