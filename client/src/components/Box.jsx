@@ -4,9 +4,9 @@ class Box extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      NativeSyntax: ["function", "var"],
-      testCategory1: ["{", "}", "toArray"],
-      testCategory2: ["=[];", "(obj)", "array.push"],
+      NativeSyntax: ["function", "var", "const", "let", "for", "else", "if", "return"],
+      testCategory1: [".length", ".sort", ".prototype" "=", "++", "!==", "||", "&&", "+=", "=>"],
+      testCategory2: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     };
   }
 
@@ -20,13 +20,13 @@ class Box extends React.Component {
       );
     } else if (this.state.testCategory1.includes(this.props.box.name)) {
       textLabel = (
-        <div className="content" style={{ color: "orange" }}>
+        <div className="content" style={{ color: "red" }}>
           {this.props.box.name}
         </div>
       );
     } else if (this.state.testCategory2.includes(this.props.box.name)) {
       textLabel = (
-        <div className="content" style={{ color: "purple" }}>
+        <div className="content" style={{ color: "#174e13" }}>
           {this.props.box.name}
         </div>
       );
