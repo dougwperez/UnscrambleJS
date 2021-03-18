@@ -31,7 +31,8 @@ class BoxesGroup extends React.Component {
     let nativeSyntax = this.props.post.Answer.match("function");
     console.log("NATIVESYNTAX", nativeSyntax);
 
-    let ansString = this.props.post.Answer.split("  ");
+    //REPLACED SPLIT WITH \ instead of "2 spaces"
+    let ansString = this.props.post.Answer.split("*");
     console.log("ansStringReal", ansString);
     var newArr = [];
     for (var i = 0; i < ansString.length; i++) {
@@ -61,20 +62,21 @@ class BoxesGroup extends React.Component {
 
     this.state.boxes.forEach((box) => {
       console.log("name", box.name);
-      return (trackerString += box.name + "  ");
+      return (trackerString += box.name + "*");
     });
 
     //AUDIO FILES
     const pieceAudio = document.getElementsByClassName("element2")[0];
     pieceAudio.volume = 0.5;
     pieceAudio.play();
-    var ts = trackerString.slice(0, -2);
+    console.log("trackerString!", trackerString);
+    var ts = trackerString.slice(0, -1);
     console.log("TS", ts, ts.length);
     console.log(
       "COMPARE FOR VICTORY CONDITION:",
       this.props.post.Answer,
       this.state.AnsString.length,
-      this.props.post.Answer
+      ts
     );
 
     if (this.props.post.Answer === ts && this.state.VictoryModal === false) {
