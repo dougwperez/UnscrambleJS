@@ -21,12 +21,20 @@ export default function QFab(props) {
   const [counter, setCounter] = React.useState(props.currentQ.Score);
   const [open, setOpen] = React.useState(false);
   const [hover, setHover] = React.useState("");
+  const [increase, setIncrease] = React.useState(true);
+  const [decrease, setDecrease] = React.useState(true);
   const handleOpen = () => {
     setOpen(true);
   };
 
   const incrementCounter = () => {
-    setCounter(counter + 1);
+    if (increase) {
+      setCounter(counter + 1);
+      setIncrease(false);
+      setDecrease(true);
+    } else {
+      null;
+    }
 
     if (props.difficulty === "Beginner") {
       props.updateScore("easy", props.currentQ._id, counter + 1);
@@ -36,7 +44,13 @@ export default function QFab(props) {
   };
 
   const decrementCounter = () => {
-    setCounter(counter - 1);
+    if (decrease) {
+      setCounter(counter - 1);
+      setDecrease(false);
+      setIncrease(true);
+    } else {
+      null;
+    }
   };
 
   const swapDifficultyRefresh = () => {
